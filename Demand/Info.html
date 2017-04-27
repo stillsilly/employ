@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+        <script src="../Scripts/src/lib/head.js"></script>
+    </head>
+    <body>
+        
+        
+<style>
+    html, body {
+        background-color: #eaeaea;
+    }
+    .ui-container{
+        padding-top:45px;
+    }
+    .ui-head{
+        color:#fff;
+        background-color:#f66666;
+    }
+    .ui-tab-job i {
+        color: #adadad;
+        border-color: #eee;
+    }
+    .ui-button-row {
+        margin: 20px 20px 0;
+    }
+    .ui-button-row button[type=button] {
+        background-color: #fff;
+        color: #666;
+        border-color: #fff;
+    }
+    .ui-user .menu li em.arrow {
+        height: auto;
+        width: auto;
+    }
+</style>
+<div class="ui-container" id="app">
+    <my-header title="账户信息"></my-header>
+    <div class="ui-user">
+        <my-user :model="realName" v-on:message="change()" :src="headerImg" type="2"></my-user>
+        <div class="menu">
+           <!--  <ul>
+                <my-row icon="ui-icon-name" title="姓名" :content="realName"></my-row>
+                <my-row icon="ui-icon-account" title="账号" :content="878777362"></my-row>
+            </ul> -->
+            <ul>
+                <my-row icon="ui-icon-name" title="姓名" :content="realName"></my-row>
+                <!-- <my-row icon="ui-icon-phone" title="绑定手机" :content="tel" arrow="1" v-on:message="bind()"></my-row> -->
+                <my-row icon="ui-icon-phone" title="绑定手机" :content="tel"  v-on:message="bind()"></my-row> 
+                <my-row icon="ui-icon-password" title="登录密码" content="修改" arrow="1" v-on:message="modify()"></my-row>
+            </ul>
+        </div>
+    </div>
+    <div class="ui-button-row">
+        <my-button text="退出登录" v-on:message="quit()"></my-button>
+    </div>
+</div>
+        <script src="../Scripts/require.js" data-main="../Scripts/src/boot" async="async" defer="defer"></script>
+    </body>
+</html>

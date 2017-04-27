@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+        <script src="../Scripts/src/lib/head.js"></script>
+    </head>
+    <body>
+        
+        
+<style>
+    body {
+        background: url(../Images/User/land_background@2x@2x.png) left bottom no-repeat;
+        background-size: 100% 120%;
+    }
+</style>
+<div class="ui-container" id="app">
+    <my-header title="宝贝儿股份" transparent="true"></my-header>
+    <div class="ui-body">
+        <div class="ui-form">
+            <dl>
+                <dd>
+                    <my-text v-bind:model.sync="phone" placeholder="请输入手机号码"></my-text>
+                </dd>
+                <dd>
+                    <my-code v-bind:model.sync="phone_code" placeholder="请输入验证码" text="获取验证码" v-on:message="message(2)"></my-code>
+                </dd>
+                <dd style="margin-top:30px;">
+                    <my-button text="验证并登录" v-on:message="login()"></my-button>
+                </dd>
+                <dd class="ui-tips-row">
+                    温馨提示：未注册宝贝儿账户，快捷登录将自动引导您注册宝贝儿账户，且代表您已同意<a href="/User/Protocol">《宝贝儿服务协议》</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+        <script src="../Scripts/require.js" data-main="../Scripts/src/boot" async="async" defer="defer"></script>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+        <script src="../Scripts/src/lib/head.js"></script>
+    </head>
+    <body>
+        
+        
+<div class="ui-container" id="app">
+    <my-header title="意见反馈"></my-header>
+    <div class="ui-body">
+        <div class="ui-form">
+            <dl>
+                <dd>
+                    <my-text placeholder="请将您的意见或建议告诉我们" v-bind:model.sync="feedback" type="textarea"></my-text>
+                    <my-upload v-bind:model.sync="img" text="上传图片"></my-upload>
+                </dd>
+                <dd class="ui-button-row">
+                    <my-button text="提交" v-on:message="submit()"></my-button>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+        <script src="../Scripts/require.js" data-main="../Scripts/src/boot" async="async" defer="defer"></script>
+    </body>
+</html>

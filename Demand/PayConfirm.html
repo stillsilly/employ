@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+        <script src="../Scripts/src/lib/head.js"></script>
+    </head>
+    <body>
+        
+        
+<style>
+    html, body {
+        background-color: #eaeaea;
+    }
+    .ui-form-job {
+        background-color: #fff;
+        margin: 10px 15px;
+    }
+    .ui-form-job dl dt {
+        margin: 0;
+        font-size: 16px;
+        line-height: 45px;
+    }
+    .ui-form-job dl dd {
+        padding-left: 85px;
+        padding-right: 5px;
+    }
+    .ui-form-job dl dd input[type=text],
+    .ui-form-job dl dd textarea {
+        background-color: #eee;
+    }
+    .ui-form-job dl dd textarea {
+        margin-bottom: 25px;
+    }
+    .ui-card-resume .info {
+        padding: 15px 15px 5px;
+    }
+    .ui-form-job ul li {
+        position: relative;
+        margin-bottom: 10px;
+        padding-left: 85px;
+    }
+</style>
+<div class="ui-container" id="app">
+    <my-header title="任务结算确认"></my-header>
+    <div class="ui-body">
+        <my-card :model="card"></my-card>
+        <my-resume :model="resume"></my-resume>
+        <div class="ui-form ui-form-job">
+            <dl>
+                <dt><my-label text="兼职完成情况"></my-label></dt>
+                <dd>
+                    <my-input chn="日销售指标" v-bind:model.sync="model.saleTarget"></my-input>
+                </dd>
+                <dd style="min-height: 32px;">
+                    <em><my-label text="日销量："></my-label></em>
+                    <ul>
+                        <li v-for="item in model.dailyTarget"><my-input :chn='item.chn' v-bind:model.sync="item.value"></my-input></li>
+                    </ul>
+                </dd>
+                <dd>
+                    <my-input chn="薪资确认" v-bind:model.sync="model.payable" ></my-input>
+                </dd>
+                <dd>
+                    <my-input chn="备注(选填)" v-bind:model.sync="model.desc" textarea="textarea"></my-input>
+                </dd>
+            </dl>
+        </div>
+        <div style="margin:20px 30px;">
+            <my-button text="提交" v-on:message="submit"></my-button>
+        </div>
+     </div>
+</div>
+        <script src="../Scripts/require.js" data-main="../Scripts/src/boot" async="async" defer="defer"></script>
+    </body>
+</html>

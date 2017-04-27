@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+        <script src="../Scripts/src/lib/head.js"></script>
+    </head>
+    <body>
+        
+        
+<style>
+    html, body {
+        background-color: #eaeaea;
+    }
+    .ui-button-row {
+        margin: 20px 30px;
+    }
+    .ui-button-row button[type=button] {
+        color: #fff;
+    }
+</style>
+<div class="ui-container" id="app">
+    <my-header title="工作任务"></my-header>
+    <div class="ui-body">
+        <my-notice :model="model"></my-notice>
+        <my-task :model="model"></my-task>
+        <div class="ui-button-row">
+            <my-button text="发送任务通知" v-on:message="send()"></my-button>
+        </div>
+    </div>
+</div>
+        <script src="../Scripts/require.js" data-main="../Scripts/src/boot" async="async" defer="defer"></script>
+    </body>
+</html>

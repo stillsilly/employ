@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+        <script src="../Scripts/src/lib/head.js"></script>
+    </head>
+    <body>
+<style>
+    .ui-card-resume .info {
+        padding: 15px 15px 5px;
+    }
+</style>
+<div class="ui-container" id="app" style="padding-top:45px">
+    <my-header :title="title"></my-header>
+    <div class="ui-body">
+        <div class="ui-card-list">
+            <my-resume v-for="item in list" :status="nav.status" :model="item" :url="'/Demand/ResumeInfo?uid=' + item.userID+'&status='+nav.status+'&taskID='+item.taskID" v-on:message="message"></my-resume>
+        </div>
+    </div>
+</div>
+        <script src="../Scripts/require.js" data-main="../Scripts/src/boot" async="async" defer="defer"></script>
+    </body>
+</html>

@@ -1,0 +1,125 @@
+﻿/*-----------------------------省市选择样式-------------------------------------*/
+.city-container .filter{
+	position:relative;
+	margin-top:40px;
+}
+.city-container .filter-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #7a7a7a;
+    font-size: 20px;
+    height: 40px;
+    width: 60px;
+    line-height: 40px;
+    vertical-align: middle;
+    text-align: center;
+    z-index:9999;
+}
+.city-container .filter-menu {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    color: #666;
+	position:relative;
+}
+.city-container .filter-menu li{
+	display: list-item;
+	-webkit-box-flex:1;
+	-webkit-flex:1;
+	-ms-flex:1;
+	flex:1;
+	line-height:52px;
+	text-align:center;
+}
+.city-container .filter-menu li .iconfont{
+	display:none;
+	padding-left:3px;
+}
+.city-container .filter-menu li:nth-child(2n){
+	border-left:1px solid #f1f1f1;
+}
+.city-container .filter-tab {
+	position:absolute;
+	left:0;
+	right:0;
+	z-index:10000;
+	color:#7a7a7a;
+	border-top: 1px solid rgba(0,0,0,0.05);
+	border-bottom: 1px solid rgba(0,0,0,0.05);
+	background-color: #fff;
+}
+.city-container .filter-tab-item{
+	display:none;	
+}
+.city-container .filter-tab-item > dl{
+	max-height:270px;
+	overflow:auto;
+}
+.city-container .filter-tab-item dd{
+	padding-left:16px;
+	text-align:left;
+}
+.city-container .filter-tab-item-main dd{
+	height:44px;
+	line-height:44px;
+	background-color:#f5f5f5;
+}
+.city-container .filter-tab-item-main dd.on{
+	background-color:#fff;
+}
+.city-container .filter-tab-item-sub dd{
+	height:43px;
+	line-height:43px;
+	border-bottom:1px solid #f0f0f0;
+	background-color:#fff;
+}
+.city-container .filter-tab-item-sub dd.on{
+    color: #f66666;
+    border-bottom: 1px solid #f66666;
+}
+.city-container .filter-tab-item-mutil{
+	position:relative;
+}
+.city-container .filter-tab-item-mutil .filter-tab-item-main{
+	margin-right:60%;
+}
+.city-container .filter-tab-item-mutil .filter-tab-item-sub{
+	width:60%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.city-container-box {
+	position:fixed;
+    left: 0;
+    top: 0;
+	right:0;
+	bottom:0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10001;
+}
+.city-container {
+    position: absolute;
+    color: #666;
+    margin-top: -165px;
+    top: 50%;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #fff;
+    border-radius: 5px 5px 0 0;
+    left: 10px;
+    right: 10px;
+}
+.city-container .btn-city{
+	background-color:#fff;
+	height:48px;
+	line-height:48px;
+	position:absolute;
+    left: 5px;
+	right:5px;
+    top: 5px;
+	text-align:center;
+	color:#7a7a7a;
+}

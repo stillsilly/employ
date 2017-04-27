@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+        <script src="../Scripts/src/lib/head.js"></script>
+    </head>
+    <body>
+        
+        
+<style>
+    html, body {
+        background-color: #eaeaea;
+    }
+
+    .ui-tab-job i {
+        color: #adadad;
+        border-color: #eee;
+    }
+
+    .ui-icon-head {
+        line-height: 50px;
+    }
+
+    .ui-card-button {
+        background-color: #fff;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9999;
+    }
+</style>
+<div class="ui-container" id="app">
+    <my-header title="简历详情"></my-header>
+    <div class="ui-body">
+        <my-resume :model="model"></my-resume>
+        <my-school :model="model"></my-school>
+        <my-group v-on:message="message" :status="nav.status" :model="model"></my-group>
+    </div>
+</div>
+        <script src="../Scripts/require.js" data-main="../Scripts/src/boot" async="async" defer="defer"></script>
+    </body>
+</html>

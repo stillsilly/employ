@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+        <script src="../Scripts/src/lib/head.js"></script>
+    </head>
+    <body>
+        
+        
+<style>
+    html, body {
+        background-color: #eaeaea;
+    }
+
+    .ui-tab-job i {
+        color: #adadad;
+        border-color: #eee;
+    }
+
+    .ui-icon-head {
+        line-height: 50px;
+    }
+
+    .ui-card-button {
+        background-color: #fff;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9999;
+    }
+</style>
+<div class="ui-container" id="app">
+    <my-header title="评价"></my-header>
+    <div class="ui-body">
+        <my-evaluate :model="model" :type_id.sync="typeID"></my-evaluate>
+        <div class="ui-card ui-card-score" v-show="typeID != 1">
+            <dl>
+                <dt><my-label text="为校园大使打分"></my-label></dt>
+                <dd>
+                    <my-score :punctuality="punctuality" :proactive="proactive" :completeness="completeness"></my-score>
+                </dd>
+            </dl>
+        </div>
+        <div style="margin: 10px 15px 0;">
+            <my-button text="提交" v-on:click="submit"></my-button>
+        </div>
+    </div>
+</div>
+        <script src="../Scripts/require.js" data-main="../Scripts/src/boot" async="async" defer="defer"></script>
+    </body>
+</html>

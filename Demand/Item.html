@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+        <script src="../Scripts/src/lib/head.js"></script>
+    </head>
+    <body>
+        
+        
+<style>
+    html, body {
+        background-color: #eaeaea;
+    }
+    .ui-card-item dl dt {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .ui-card-item dl dd {
+        position: relative;
+        padding-left: 85px;
+        color:#878787;
+        min-height: 21px;
+        margin-bottom: 5px;
+    }
+    .ui-card-item dl dd em {
+        position: absolute;
+        left: 0;
+        top: 0;
+        color:#adadad;
+    }
+    .ui-card-item dl dd.ui-icon-name {
+        padding-left: 28px;
+        background: url(../Images/Demand/release_icon_name@2x.png) left center no-repeat !important;
+        background-size: 20px !important;
+        margin-bottom: 10px;
+    }
+    .ui-card-item dl dd.ui-icon-phone {
+        padding-left: 28px;
+        background: url(../Images/Demand/resume_icon_phone@2x.png) left center no-repeat !important;
+        background-size: 20px !important;
+    }
+    .ui-card-item dl dd a{
+        color:#878787;
+    }
+</style>
+<div class="ui-container" id="app">
+    <my-header title="职位详情"></my-header>
+    <div class="ui-body">
+        <my-card :model="item" showtime="1"></my-card>
+        <my-item type="1" :model="item"></my-item>
+        <my-item type="2" :model="item"></my-item>
+        <div class="ui-user-menu" v-if="!nav.hideItem">
+            <ul>
+                <my-row type="2" :title="'已收'+item.currentApplyNum+'封'" content="../Images/Demand/release_icon_receive-resume_choice@2x.png" v-on:message="resume"></my-row>
+                <my-row type="2" title="邀请大使" content="../Images/Demand/release_icon_invitation_no-choice@2x.png" v-on:message="invite"></my-row>
+            </ul>
+        </div>
+        <div class="ui-user-menu" v-if="nav.hideItem">
+            <ul>
+                <!-- <my-row type="2" title="" v-on:message="invite"></my-row> -->
+                <li>    
+                    <div @click="again"> 重新发布  </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+        <script src="../Scripts/require.js" data-main="../Scripts/src/boot" async="async" defer="defer"></script>
+    </body>
+</html>

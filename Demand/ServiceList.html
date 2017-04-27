@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+        <script src="../Scripts/src/lib/head.js"></script>
+    </head>
+    <body>
+        
+        
+<style>
+    html, body {
+        background-color: #eaeaea;
+    }
+
+    .ui-tab-job i {
+        color: #adadad;
+        border-color: #eee;
+    }
+    .titList:after{
+        content: ' ';
+        display: block;
+        clear:both;
+    }
+    .titList{
+        height:45px;
+        background: #fff;
+        border-bottom:1px solid #eaeaea;
+    }
+    .titList li{
+        float: left;
+        width: 33%;
+        height:45px;
+        line-height: 45px;
+        text-align: center;
+        color:#adadad;
+         position: relative;
+    }
+    .titList li.scoreFa span.acsImg i{
+        right: 0px;
+    }
+     .titList li.scoreFa span.acImg i{
+        right: 0px;
+    }
+    .titList span{
+        display: inline-block;
+        height: 43px;
+        width:60%;
+    }
+    .titList span.acImg{
+       position: relative;
+    }
+    .titList span.acImg i{ 
+        background: url('../Images/bot.png') no-repeat;
+        background-size:15px;
+        position: absolute;
+        top:14px;
+        right:-14px;
+    }
+    .titList span.acsImg{
+      position: relative;
+    }
+    .titList span.acsImg i{ 
+        background: url('../Images/top.png') no-repeat;
+        background-size:15px;
+        position: absolute;
+        top:14px;
+        right: -14px;
+    }
+    .titList span i{
+        display: inline-block;
+        width: 15px;
+        height:15px;
+    }
+    .titList span.active{
+        border-bottom: 2px solid #f66666;
+    }
+    .titList span.active.acsImg i{
+        background: url('../Images/top.png') no-repeat;
+        background-size:15px; 
+    }
+    .titBody{
+        width:100%;
+        position: fixed;
+        top:45px;
+        z-index: 20;
+    }
+    .titBody p{
+        border:2px solid #eaeaea;
+
+    }
+</style>
+<div class="ui-container" style="padding-top: 92px;" id="app">
+    <my-header title="校园大使列表"></my-header>  
+    <div class="titBody">
+        <p></p>
+        <ul class="titList">
+            <li @click="active('allSort')">
+                <span :class="{'active':allSort}">
+                    <em>综合排序</em>
+                    <!-- <i></i> -->
+                </span>
+            </li>
+            <li @click="active('allRange')">
+                <span :class="{'active':allRange,'acImg':allRangeImg,'acsImg':!allRangeImg}">
+                    <em>距离排序</em>
+                    <i></i>
+                </span>
+            </li>
+            <li @click="active('allScore')" class="scoreFa">
+                <span :class="{'active':allScore,'acImg':allScoreImg,'acsImg':!allScoreImg}">
+                    <em>评分</em>
+                    <i></i>
+                </span>
+            </li>
+        </ul>
+    </div>
+    <div class="ui-body">
+        <div class="ui-card-list">
+            <my-resume v-for="item in list" status="16" :model="item" :url="'/Demand/ResumeInfo?uid=' + item.id + '&status=' + item.status+'&taskID='+item.taskID" v-on:message="message"></my-resume>
+        </div>
+        <div style="text-align: center;" v-show="bottomShow"> 
+            <span><img style="position: relative;top:15px;" src="../Images/loading-b.gif">加载更多...</span>
+        </div>
+    </div>
+</div>
+        <script src="../Scripts/require.js" data-main="../Scripts/src/boot" async="async" defer="defer"></script>
+    </body>
+</html>

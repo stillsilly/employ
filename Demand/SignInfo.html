@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+        <script src="../Scripts/src/lib/head.js"></script>
+    </head>
+    <body>
+        
+        
+<style>
+    html, body {
+        background-color: #eaeaea;
+    }
+
+    .ui-module-sign dl {
+        padding: 5px 15px 15px;
+        margin: 12px;
+        background-color: #fff;
+    }
+
+    .ui-module-sign dt {
+        color: #878787;
+        line-height: 42px;
+    }
+
+        .ui-module-sign dt em {
+            color: #ccc;
+        }
+
+    .ui-module-sign dd {
+        background: #f7f7f7 center center no-repeat;
+        background-size: 100%;
+        height: 240px;
+        line-height: 240px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .ui-module-sign dd:last-child {
+        margin-bottom: 0;
+    }
+</style>
+<div class="ui-container" id="app">
+    <my-header title="签到详情"></my-header>
+    <div class="ui-body">
+        <my-sign v-for="item in list" :model="item"></my-sign>
+    </div>
+</div>
+        <script src="../Scripts/require.js" data-main="../Scripts/src/boot" async="async" defer="defer"></script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+        <script src="../Scripts/src/lib/head.js"></script>
+    </head>
+    <body>
+        
+        
+<style>
+    .ui-head {
+        background-color: #fff;
+    }
+</style>
+<div class="ui-container" id="app">
+    <my-header :title="title"></my-header>
+    <div class="ui-body">
+        <div class="ui-protocol">
+            <div v-html="article"></div>
+        </div>
+    </div>
+</div>
+        <script src="../Scripts/require.js" data-main="../Scripts/src/boot" async="async" defer="defer"></script>
+    </body>
+</html>

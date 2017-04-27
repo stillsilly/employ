@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+        <script src="../Scripts/src/lib/head.js"></script>
+    </head>
+    <body>
+        
+        
+<style>
+    html, body {
+        background-color: #eaeaea;
+    }
+    .ui-head {
+        background-color: #fff;
+    }
+    .ui-form-job {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 30px;
+        bottom: 0;
+        padding-top: 40px;
+    }
+</style>
+<div class="ui-container" id="app">
+    <my-header title="发布职位需求"></my-header>
+    <div class="ui-body">
+        <my-label type="tips" text="为了更好的匹配到兼职学生，请尽量完善职位需求内容。"></my-label>
+        <div class="ui-form ui-form-job">
+            <dl>
+                <dt><my-label text="基本信息"></my-label></dt>
+                <dd>
+                    <my-input chn="职位" v-bind:model.sync="positionTypeID" dict="position_type"></my-input>
+                </dd>
+                <dd>
+                    <my-input chn="招聘人数" v-bind:model.sync="number" tips="人" type="number"></my-input>
+                </dd>
+                <dd>
+                    <my-input chn="人员要求" v-bind:model.sync="requirementsID" dict="people_requirement"></my-input>
+                </dd>
+                <dd>
+                    <my-input chn="性别要求" v-bind:model.sync="sexual" dict="sexual"></my-input>
+                </dd>
+            </dl>
+            <dl>
+                <dt><my-label text="薪资待遇"></my-label></dt>
+                <my-radio type="1" chn="薪资" v-on:hide="isHide" v-bind:salary.sync="salary" v-bind:time_unit_id.sync="timeUnitID" v-bind:salary_type.sync="salaryType" :sar="sar"></my-radio>
+                <my-radio type="2" chn="奖励" v-if="!hideRa" v-on:hide="isHide" v-bind:push_money_percent.sync="pushMoneyPercent" v-bind:bonus_condition.sync="bonusCondition" v-bind:reward_type.sync="rewardType" v-bind:bonus_reward.sync="bonusReward"></my-radio>
+                <dd>
+                    <my-date chn="工作日期" placeholder="开始日期" v-bind:model.sync="startDate"></my-date>
+                </dd>
+                <dd>
+                    <my-date placeholder="截止日期" v-bind:model.sync="endDate"></my-date>
+                </dd>
+                <dd>
+                    <my-date chn="工作时间" placeholder="开始时间" v-bind:model.sync="workHours" theme="time"></my-date>
+                </dd>
+                <dd>
+                    <my-date placeholder="结束时间" v-bind:model.sync="offHours" theme="time"></my-date>
+                </dd>
+            </dl>
+            <dl>
+                <dt><my-label text="工作地点"></my-label></dt>
+                <dd>
+                    <my-city chn="工作地点" placeholder="请选择城市" v-on:message="clearAdd" v-bind:model.sync="cityName" v-bind:store_id="storeID"  dict="mystore" :system_id="systemID" v-bind:province_id="provinceID" v-bind:city_id="cityID" v-bind:region_id="regionID" v-bind:area_id="areaID"></my-city>
+                </dd>
+                <dd>
+                    <my-system chn="所属系统" v-bind:model.sync="systemID" v-on:sys="clearAdd"></my-system>
+                </dd>
+                <dd>
+                    <my-store chn="门店" v-bind:model.sync="storeID" v-bind:address.sync="address" dict="mystore" :system_id="systemID" v-bind:province_id="provinceID" v-bind:city_id="cityID" v-bind:region_id="regionID"></my-input>
+                </dd>
+                <dd class="ui-single-row">
+                    <my-input chn="地址" v-bind:model.sync="address" disabled="true" textarea="textarea"></my-input>
+                </dd>
+            </dl>
+            <dl>
+                <dt><my-label text="工作要求"></my-label></dt>
+                <dd class="ui-single-row">
+                    <my-input chn="职位描述" v-bind:model.sync="jobDesc" textarea="textarea"></my-input>
+                </dd>
+                <dd class="ui-single-row">
+                    <my-tag chn="要求" v-bind:model.sync="requirementsTagID" v-bind:tag_id="tag_id" dict="tag"></my-tag>
+                </dd>
+                <dd>
+                    <my-input chn="线下面试" v-bind:model.sync="interview" dict="interview"></my-input>
+                </dd>
+            </dl>
+            <dl>
+                <dt><my-label text="联系方式"></my-label></dt>
+                <dd>
+                    <my-input chn="联系人" v-bind:model.sync="contactName" ></my-input>
+                </dd>
+                <dd>
+                    <my-input chn="联系方式" v-bind:model.sync="contactmobile" placeholder="请输入联系方式" type="tel"></my-input>
+                </dd>
+                <dd>
+                    <my-date chn="报名截止" v-bind:model.sync="applyDeadline" placeholder="请选择报名截止日期"></my-date>
+                </dd>
+                <dd class="ui-button-row" style="padding:0;">
+                    <div class="ui-tips-row" style="padding: 0;text-align: center;">
+                        <my-link chn="我已阅读并同意" href="/User/Protocol?type=3&title=宝贝儿兼职需求发布协议" text="《宝贝儿兼职需求发布协议》"></my-link>
+                    </div>
+                    <div style="width: 300px; margin:5px auto 15px;padding-bottom: 25px;">
+                        <my-button text="发布职位" v-on:message="submit()"></my-button>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <my-cityselect v-bind:model.sync="cityName" v-bind:province_id.sync="provinceID" v-bind:city_id.sync="cityID" v-bind:region_id.sync="regionID" ></my-cityselect>
+</div>
+        <script src="../Scripts/require.js" data-main="../Scripts/src/boot" async="async" defer="defer"></script>
+    </body>
+</html>

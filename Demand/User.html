@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+        <script src="../Scripts/src/lib/head.js"></script>
+    </head>
+    <body>
+        
+        
+<style>
+    html, body {
+        background-color: #eaeaea;
+    }
+
+    .ui-container {
+        padding-top: 45px;
+    }
+
+    .ui-head {
+        color: #fff;
+        background-color: #f66666;
+    }
+
+    .ui-user-tab ul {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+    }
+
+        .ui-user-tab ul li {
+            display: list-item;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            min-height:50px;
+            line-height: 50px;
+            position:relative;
+        }
+
+        .ui-user-tab ul li:after {
+            content: "";
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 10px;
+            bottom: 10px;
+            width: 1px;
+            background-color: #eee;
+        }
+            .ui-user-tab ul li:last-child:after {
+                display:none;
+            }
+
+            .ui-user-tab ul li div.ui-icon-name {
+                background-repeat: no-repeat;
+                background-position: 10px center;
+                background-size: 24px;
+                text-align: center;
+            }
+            .ui-user-tab ul li > em {
+                width:60px;
+                display:block;
+                margin:0 auto;
+                position:relative;
+            }
+                .ui-user-tab ul li > em i {
+                    position: absolute;
+                    right: -12px;
+                    top: 8px;
+                    width: 16px;
+                    height: 16px;
+                    border-radius: 50%;
+                    background-color: #f66666;
+                    color: #fff;
+                    line-height: 16px;
+                    text-align: center;
+                    font-size: 12px;
+                    font-family: serif;
+                }
+    .ui-user-tab2 {
+        border-top: 10px solid #eee;
+        color: #333;
+    }
+
+        .ui-user-tab2 ul li div.ui-icon-name {
+            width: 60px;
+            height: 30px;
+            display: block;
+            margin: 10px auto 0;
+            background-size: 32px;
+            background-position: center center;
+        }
+
+        .ui-user-tab2 ul li em {
+            display: block;
+            text-align: center;
+            line-height: 32px;
+        }
+        .ui-icon-user {
+            position: relative;
+            text-align: left;
+            padding: 40px 0 60px 110px;
+        }
+    .ui-user .info .head {
+        background-size: 70px;
+        width: 70px;
+        height: 70px;
+        position: absolute;
+        left: 20px;
+        top: 40%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+    .ui-icon-account {
+        background-image:url(../Images/Demand2/personal_icon_feedback@2x.png) !important
+    }
+    .ui-icon-phone {
+        background-image:url(../Images/Demand2/personal_icon_phone@2x.png) !important
+    }
+    .ui-user-tab2 ul li:nth-child(1) div.ui-icon-name{
+        background-image:url(../Images/Demand2/personal_icon_not-evaluated@2x.png) !important
+    }
+    .ui-user-tab2 ul li:nth-child(2) div.ui-icon-name{
+        background-image:url(../Images/Demand2/persona_icon_not-settled@2x.png) !important
+    }
+    .ui-user-tab2 ul li:nth-child(3) div.ui-icon-name{
+        background-image:url(../Images/Demand2/persona_icon_complete@2x.png) !important
+    }
+</style>
+<div class="ui-container" id="app">
+    <my-header title="个人中心"></my-header>
+    <div class="ui-user">
+        <my-user :model="realName" :role="areaName  + positionName" type="1" :src="headerImg" v-on:message="jumpDetail"></my-user>
+        <div class="ui-user-tab">
+            <ul>
+                <my-row type="1" :content="publishedNum" href="/Demand/List"></my-row>
+                <my-row content="发布职位" href="/Demand/Add"></my-row>
+            </ul>
+        </div>
+        <div class="ui-user-tab ui-user-tab2">
+            <ul>
+                <my-row icon="ui-icon-name" :infotit="evaluationNum" content="待评价" href="/Demand/Evaluate"></my-row>
+                <my-row icon="ui-icon-name" :infotit="settlementNum" content="待结算" href="/Demand/Pay?status=6"></my-row>
+                <my-row icon="ui-icon-name" content="已完成" href="/Demand/Pay?status=9"></my-row>
+            </ul>
+        </div>
+        <div class="menu">
+            <ul>
+                <my-row icon="ui-icon-account" title="意见反馈" arrow="1" href="/User/Feedback?type=2"></my-row>
+                <my-row icon="ui-icon-phone" title="联系客服" arrow="1" v-on:message="contact"></my-row>
+            </ul>
+        </div>
+        <div class="ui-user-menu">
+            <ul>
+                <my-row type="2" title="职位列表" content="../Images/Demand2/personal-center_icon_list_no-choice@2x.png" href="/Demand/List"></my-row>
+                <my-row type="2" title="个人中心" content="../Images/Demand2/personal-center_icon_personal-Center_choice@2x.png" href="/Demand/User"></my-row>
+            </ul>
+        </div>
+    </div>
+</div>
+        <script src="../Scripts/require.js" data-main="../Scripts/src/boot" async="async" defer="defer"></script>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+        <script src="../Scripts/src/lib/head.js"></script>
+    </head>
+    <body>
+        
+        
+<style>
+    body {
+        background: url(../Images/User/land_background@2x@2x.png) left bottom no-repeat;
+        background-size: 100% 120%;
+    }
+    .ui-logo {
+        margin: 30px 0 20px;
+        height: 150px;
+        background: url(../Images/User/land_icon_logo@2x.png) center center no-repeat;
+        background-size: 110px;
+    }
+    .ui-form {
+        margin: 10px;
+        padding: 20px 15px 5px;
+        background-color: rgba(255,255,255,0.46);
+        border-radius:2px;
+    }
+    .ui-form dl {
+        margin: 0;
+    }
+</style>
+<div class="ui-container" id="app">
+    <!-- <my-header title="宝贝儿股份" transparent="true"></my-header> -->
+    <div class="ui-body">
+        <div class="ui-logo"></div>
+        <div class="ui-form">
+            <dl>
+                <dd>
+                    <my-text v-bind:model.sync="phone" placeholder="请输入手机号码" type="number"></my-text>
+                </dd>
+                <dd style="margin-bottom:0;">
+                    <my-password v-bind:model.sync="password" placeholder="请输入密码"></my-password>
+                </dd>
+                <dd class="ui-link-row">
+                    <my-link href="/User/Forget" class="left" text="忘记密码"></my-link>
+                </dd>
+                <dd style="margin-top:30px;">
+                    <my-button text="登录" v-on:message="login()"></my-button>
+                    <my-button text="注册" type="register" v-if="usertype=='1'" v-on:message="register()"></my-button>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+        <script src="../Scripts/require.js" data-main="../Scripts/src/boot" async="async" defer="defer"></script>
+    </body>
+</html>

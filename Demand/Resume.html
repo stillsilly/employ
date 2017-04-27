@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+        <script src="../Scripts/src/lib/head.js"></script>
+    </head>
+    <body>
+        
+        
+<style>
+    html, body {
+        background-color: #eaeaea;
+    }
+    .ui-tab-job i {
+        color: #adadad;
+        border-color: #eee;
+    }
+</style>
+<div class="ui-container" id="app">
+    <my-header title="已收到的简历"></my-header>
+    <div class="ui-body">
+        <my-tab dict="resume" v-bind:model.sync="status" v-on:message="load" ></my-tab>
+        <div class="ui-card-list">
+            <my-resume v-for="item in list" :status="item.status" :url="'/Demand/ResumeInfo?id=' + nav.id + '&uid=' + item.id + '&status=' + item.status+'&taskID='+item.taskID" :model="item" v-on:message="message"></my-resume>
+        </div>
+        <div style="text-align: center;" v-show="bottomShow"> 
+            <span><img style="position: relative;top:15px;" src="../Images/loading-b.gif">加载更多...</span>
+        </div>
+    </div>
+</div>
+        <script src="../Scripts/require.js" data-main="../Scripts/src/boot" async="async" defer="defer"></script>
+    </body>
+</html>

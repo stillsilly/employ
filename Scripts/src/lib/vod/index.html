@@ -1,0 +1,103 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>视频上传</title>
+    <script src="./aliyun-sdk.min.js"></script>
+    <script src="./vod-sdk-upload.min.js"></script>
+    <script src="/Scripts/src/lib/zepto.min.js"></script>
+    <style>
+        html, body {
+            font-size: 12px;
+        }
+        .container {
+            width: 640px;
+            margin: 0 auto;
+        }
+        .file {
+            margin: 20px 0;
+        }
+        .progress {
+            height: 6px;
+            border-radius: 3px;
+            background-color: #42485b;
+        }
+        .bar {
+            width: 0;
+            height: 6px;
+            border-radius: 3px;
+            background-color: #21c8d6;
+        }
+        .message{
+            margin-top:12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="file"><input type="file" name="file" id="files" multiple /></div>
+        <div class="progress">
+            <div class="bar"></div>
+        </div>
+        <div class="message"></div>
+    </div>
+    <script>
+        function toSize(m) {
+            return Math.round(m / 1024 / 1024 * 100) / 100 + "M";
+        }
+        function load(result) {
+            var bar = $(".bar");
+            var msg = $(".message");
+            var uploader = new VODUpload({
+                // 文件上传失败
+                'onUploadFailed': function (fileName, code, message) {
+                    msg.html("视频上传失败: " + fileName + code + "," + message);
+                },
+                // 文件上传完成
+                'onUploadSucceed': function (fileName) {
+                    var url = "http://xhnewsvideo.oss-cn-hangzhou.aliyuncs.com/" + fileName;
+                    msg.html("视频上传成功: <a href='" + url + "' target='_blank'>" + fileName + "</a>");
+                },
+                // 文件上传进度
+                'onUploadProgress': function (fileName, totalSize, uploadedSize) {
+                    bar.css({ width: Math.ceil(uploadedSize * 100 / totalSize) + "%" });
+                    msg.html("正在上传视频:" + fileName + ", 大小：" + toSize(totalSize) + ", 已上传：" + toSize(uploadedSize) + ", 进度:" + Math.ceil(uploadedSize * 100 / totalSize) + "%");
+                },
+                // token超时
+                'onUploadTokenExpired': function (callback) {
+                    msg.html("视频Token失效");
+                }
+            });
+
+            uploader.init(result.accessid, result.accesssecret, result.securitytoken, result.expire);
+
+            var files = document.getElementById("files")
+            files.addEventListener('change', function (event) {
+                for (var i = 0; i < event.target.files.length; i++) {
+                    uploader.addFile(event.target.files[i], result.host, result.bucket, result.dir + event.target.files[i].name);
+                }
+                uploader.startUpload();
+                msg.html("开始上传文件...")
+            });
+        }
+
+        $.ajax({
+            url: "http://news.yuge.ren/mgr/resources/ossvideotoken",
+            type: "Get",
+            dataType: "json",
+            contentType: "application/json; charset=UTF-8",
+            beforeSend: function (request) {
+                request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+
+                var auth = window.localStorage.getItem("Authorization");
+                if (auth) {
+                    request.setRequestHeader("Authorization", auth);
+                }
+            },
+            success: function (result) {
+                load(result.data)
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+        <script src="../Scripts/src/lib/head.js"></script>
+    </head>
+    <body>
+        
+        
+<style>
+    html, body {
+        background-color: #eaeaea;
+    }
+</style>
+<div class="ui-container" id="app">
+    <my-header title="发布职位需求" right="发布" url="/Demand/Add"></my-header>
+    <div class="ui-body">
+        <my-tab dict="job" v-bind:model.sync="status" v-on:message="load"  ></my-tab>
+        <div class="ui-card-list">
+            <my-card v-for="item in list" :status="status" :model="item" v-on:message="message"></my-card>
+        </div>
+        <div style="text-align: center;" v-show="bottomShow"> 
+            <span><img style="position: relative;top:15px;" src="../Images/loading-b.gif">加载更多...</span>
+        </div>
+        <div class="ui-user-menu">
+            <ul>
+                <my-row type="2" title="职位列表" content="../Images/Demand2/personal-center_icon_list_choice@2x.png" href="/Demand/List"></my-row>
+                <my-row type="2" title="个人中心" content="../Images/Demand2/personal-center_personal-center_no-choice@2x.png" href="/Demand/User"></my-row>
+            </ul>
+        </div>
+    </div>
+</div>
+        <script src="../Scripts/require.js" data-main="../Scripts/src/boot" async="async" defer="defer"></script>
+    </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+        <script src="../Scripts/src/lib/head.js"></script>
+    </head>
+    <body>
+        
+        
+<style>
+    .ui-pay-hd {
+        background-color: #fff;
+        line-height: 42px;
+        border-radius: 0 0 5px 5px;
+        margin: 0 12px 12px 12px;
+    }
+    .ui-pay-hd > div {
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+    .ui-pay-hd ul {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .ui-pay-hd ul li {
+        display: list-item;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        text-align: center;
+    }
+    .ui-pay-hd ul li:first-child {
+        border-right: 1px solid #eee;
+    }
+    .ui-card-resume .info {
+        padding: 15px 15px 5px;
+    }
+</style>
+<div class="ui-container" id="app" style="padding-top:45px">
+    <my-header :title="title"></my-header>
+    <div class="ui-body">
+        <my-payinfo :number="data.number" :work_number="data.workNumber"></my-payinfo>
+        <div class="ui-tips" style="margin-bottom:10px;"><my-label text="兼职人员"></my-label></div>
+        <div class="ui-card-list">
+            <my-resume v-for="item in data.taskList" status="item.relationStatus" :model="item" 
+            :url="'/Demand/ResumeInfo?id='+item.taskID+'&status=6'+'&uid='+ item.userID+'&taskID='+item.taskID" v-on:message="message"></my-resume>
+        </div>
+    </div>
+</div>
+        <script src="../Scripts/require.js" data-main="../Scripts/src/boot" async="async" defer="defer"></script>
+    </body>
+</html>

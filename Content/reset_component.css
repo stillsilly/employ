@@ -1,0 +1,93 @@
+﻿input, button, textarea{
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    border: 0;
+    background: 0 0;
+    -webkit-appearance: none;
+    outline: 0;
+    position: relative;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+select{
+       font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    border: 0;
+    background: 0 0;
+    outline: 0;
+    position: relative;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+input:after {
+    display: block;
+    position: absolute;
+    left: 0;
+    color: #dfe0e1;
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+input[type=text], input[type=password] {
+    color: #5a5a5a;
+}
+input[type=text]::-webkit-input-placeholder {
+    text-align:left;
+}
+input[type=text]::-moz-placeholder {
+    text-align:left;
+}
+input[type=text]::-ms-input-placeholder {
+    text-align:left;
+}
+input[type=text]::input-placeholder {
+    text-align: left;
+}
+input[type=text]::placeholder {
+    text-align: left;
+}
+input[type=text]:after {
+    content: '\e664';
+    bottom: -6px;
+}
+input[type=radio] {
+    width: 16px;
+    height: 16px;
+    margin-right: 3px;
+}
+input[type=radio]:after {
+    content: '\e664';
+    bottom: -6px;
+}
+input[type=radio]:checked:after {
+    content: '\e665';
+    bottom: -6px;
+    color: #13aaf8;
+}
+input[type=checkbox] {
+    width: 16px;
+    height: 16px;
+    margin-right: 3px;
+}
+input[type=checkbox]:after {
+    content: '\e675';
+    bottom: -6px;
+}
+input[type=checkbox]:checked:after {
+    content: '\e671';
+    bottom: -6px;
+    color: #13aaf8;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin: 0; 
+}
+input[type="number"]{-moz-appearance:textfield;}
